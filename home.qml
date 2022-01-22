@@ -3,8 +3,11 @@ import QtMultimedia 5.9
 import QtQuick.Layouts 1.15
 import QtGraphicalEffects 1.15
 import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
 
 Window {
+    id: root
+
     width: 640
     height: 480
     visible: true
@@ -19,6 +22,9 @@ Window {
     property string day: ""
     property QtObject backend
 
+    property bool showMenu: false
+    signal clickedClock()
+
     Background { }
 
     Connections {
@@ -31,6 +37,10 @@ Window {
             day = msg;
         }
     }
+
+    //
+    // Clock Text
+    //
 
     Text {
         width: parent.width * .9
@@ -50,6 +60,7 @@ Window {
 
         horizontalAlignment: Text.AlignLeft // HCenter
     }
+
     Text {
         width: parent.width * .9
         height: parent.height * .05
@@ -66,5 +77,56 @@ Window {
         font.pixelSize: height
 
         horizontalAlignment: Text.AlignLeft // HCenter
+    }
+
+    //
+    // Menu
+    //
+
+    RoundButton {
+        id: menuButton
+
+        width: height
+        height: parent.height * .1
+
+        checkable: true
+        checked: showMenu
+
+        text: "..."
+        radius: height / 2
+
+        anchors.right: parent.right
+        anchors.top: parent.top
+
+        anchors.margins: parent.height * 0.025
+
+        onClicked: (showMenu = !showMenu)
+    }
+
+    RoundButton {
+        id: hourChangeButton
+
+        width: height
+        height: parent.height * .1
+
+        checkable: true
+        checked: twentyFour
+
+        icon.name: "clock"
+        icon.source: "./assets/image/clock.png"
+        icon.width: height * .8
+        icon.height: height * .8
+
+        text: "Clock"
+        radius: height / 2
+
+        visible: showMenu
+
+        anchors.right: parent.right
+        anchors.top: menuButton.bottom
+
+        anchors.margins: parent.height * 0.025
+
+        onClicked: root.clickedClock()
     }
 }

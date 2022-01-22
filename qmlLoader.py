@@ -53,6 +53,12 @@ class Backend(QObject):
         # Emit signal for updated time
         self.updatedClock.emit(currentTime)
         self.updatedDate.emit(currentDate)
+    
+    def modify_timeFormat(self):
+        print('Setting Clock Format')
+        global twentyFour
+        twentyFour = not(twentyFour)
+        self.update_time()
 
 backend = Backend()
 
@@ -64,8 +70,12 @@ engine = QQmlApplicationEngine()
 engine.quit.connect(app.quit)
 engine.load('home.qml')
 
-engine.rootObjects()[0].setProperty('backend', backend)
+root = engine.rootObjects()[0]
+
+root.setProperty('backend', backend)
 backend.update_time()
+
+root.clickedClock.connect(backend.modify_timeFormat)
 
 print('Starting Window...')
 sys.exit(app.exec())
