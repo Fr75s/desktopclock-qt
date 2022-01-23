@@ -10,7 +10,7 @@ Item {
     Image {
         id: backImg
 
-        source: "./assets/image/Q.jpg"
+        source: background
         fillMode: Image.PreserveAspectCrop
 
         anchors.fill: parent

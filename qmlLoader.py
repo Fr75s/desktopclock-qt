@@ -1,8 +1,8 @@
 import sys
 
-from PyQt5.QtGui import QGuiApplication
+from PyQt5.QtGui import QGuiApplication, QIcon
 from PyQt5.QtQml import qmlRegisterType, QQmlComponent, QQmlApplicationEngine
-from PyQt5.QtCore import QTimer, QObject, QThread, pyqtSignal
+from PyQt5.QtCore import QTimer, QObject, QThread, QSettings, pyqtSignal
 
 from time import strftime, localtime
 
@@ -26,7 +26,7 @@ class Backend(QObject):
     updatedClock = pyqtSignal(str, arguments=['time'])
     updatedDate = pyqtSignal(str, arguments=['date'])
 
-    def __init__(self):
+    def __init__(self) :
         super().__init__()
 
         # Setup Thread and Worker
@@ -72,6 +72,7 @@ engine.load('home.qml')
 
 root = engine.rootObjects()[0]
 
+root.setIcon(QIcon('qClock.png'))
 root.setProperty('backend', backend)
 backend.update_time()
 

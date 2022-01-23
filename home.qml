@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.15
 import QtGraphicalEffects 1.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Dialogs 1.3
 
 Window {
     id: root
@@ -20,6 +21,7 @@ Window {
 
 	property string time: "00:00"
     property string day: ""
+    property url background: "backgrounds/default.jpg"
     property QtObject backend
 
     property bool showMenu: false
@@ -84,74 +86,5 @@ Window {
     // Menu
     //
 
-    RoundButton {
-        id: menuButton
-
-        width: height
-        height: parent.height * .1
-
-        checkable: true
-        checked: showMenu
-
-        text: "..."
-        radius: height / 2
-
-        anchors.right: parent.right
-        anchors.top: parent.top
-
-        anchors.margins: parent.height * 0.025
-
-        onClicked: (showMenu = !showMenu)
-    }
-
-    RoundButton {
-        id: hourChangeButton
-
-        width: height
-        height: parent.height * .1
-
-        checkable: true
-
-        icon.name: "clock"
-        icon.source: "./assets/image/clock.png"
-        icon.width: height * .8
-        icon.height: height * .8
-
-        radius: height / 2
-
-        visible: showMenu
-
-        anchors.right: parent.right
-        anchors.top: menuButton.bottom
-
-        anchors.margins: parent.height * 0.025
-
-        onClicked: root.clickedClock()
-    }
-
-    RoundButton {
-        id: blurChangeButton
-
-        width: height
-        height: parent.height * .1
-
-        checkable: true
-        checked: blur
-
-        icon.name: "blur"
-        icon.source: "./assets/image/blur.png"
-        icon.width: height * .7
-        icon.height: height * .7
-
-        radius: height / 2
-
-        visible: showMenu
-
-        anchors.right: parent.right
-        anchors.top: hourChangeButton.bottom
-
-        anchors.margins: parent.height * 0.025
-
-        onClicked: (blur = !blur)
-    }
+    MenuList { }
 }
