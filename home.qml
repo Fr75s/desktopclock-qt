@@ -23,6 +23,7 @@ Window {
     property QtObject backend
 
     property bool showMenu: false
+    property bool blur: true
     signal clickedClock()
 
     Background { }
@@ -110,14 +111,12 @@ Window {
         height: parent.height * .1
 
         checkable: true
-        checked: twentyFour
 
         icon.name: "clock"
         icon.source: "./assets/image/clock.png"
         icon.width: height * .8
         icon.height: height * .8
 
-        text: "Clock"
         radius: height / 2
 
         visible: showMenu
@@ -128,5 +127,31 @@ Window {
         anchors.margins: parent.height * 0.025
 
         onClicked: root.clickedClock()
+    }
+
+    RoundButton {
+        id: blurChangeButton
+
+        width: height
+        height: parent.height * .1
+
+        checkable: true
+        checked: blur
+
+        icon.name: "blur"
+        icon.source: "./assets/image/blur.png"
+        icon.width: height * .7
+        icon.height: height * .7
+
+        radius: height / 2
+
+        visible: showMenu
+
+        anchors.right: parent.right
+        anchors.top: hourChangeButton.bottom
+
+        anchors.margins: parent.height * 0.025
+
+        onClicked: (blur = !blur)
     }
 }

@@ -29,8 +29,12 @@ Item {
         anchors.fill: shaderSource
         source: shaderSource
         radius: 16
-        samples: 14
+        samples: 16
 
-        visible: true
+        opacity: blur ? 1.0 : 0.0
+
+        Behavior on opacity {
+            NumberAnimation { duration: 250 }
+        }
     }
 }
