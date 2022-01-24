@@ -21,7 +21,7 @@ Window {
 
 	property string time: "00:00"
     property string day: ""
-    property url background: "backgrounds/default.jpg"
+    property url background: "backgrounds/default.png"
     property QtObject backend
 
     property bool showMenu: false
