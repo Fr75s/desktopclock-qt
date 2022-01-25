@@ -39,6 +39,8 @@ Item {
         checkable: true
         checked: showMenu
 
+        flat: false
+
         text: "..."
         radius: height / 2
 
@@ -67,6 +69,8 @@ Item {
 
         width: height
         height: parent.height * .1
+
+        flat: true
 
         checkable: true
 
@@ -107,10 +111,12 @@ Item {
         width: height
         height: parent.height * .1
 
+        flat: true
+
         checkable: true
         checked: !blur
 
-        icon.name: "blur"
+        icon.name: "blurfx"
         icon.source: "./assets/image/blur.png"
         icon.width: height * .7
         icon.height: height * .7
@@ -144,9 +150,11 @@ Item {
         width: height
         height: parent.height * .1
 
+        flat: true
+
         checkable: false
 
-        icon.name: "folder"
+        icon.name: "folder-symbolic"
         icon.source: "./assets/image/folder.png"
         icon.width: height * .7
         icon.height: height * .7
@@ -183,10 +191,12 @@ Item {
         onAccepted: {
             console.log("You chose: " + bgSelect.fileUrl)
             background = bgSelect.fileUrl
+
             bgSelect.close()
         }
         onRejected: {
-            console.log("Canceled")
+            console.log("Cancelled")
+
             bgSelect.close()
         }
 

@@ -14,6 +14,5 @@ You can change the default background by changing the file that is backgrounds/d
 
 ### To-do
 
-- Change file picker to something more visually appealing and usable
 - Figure out if you can click a button through a QML MouseArea
 - More Customizations?

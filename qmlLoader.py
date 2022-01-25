@@ -3,6 +3,7 @@ import sys
 from PyQt5.QtGui import QGuiApplication, QIcon
 from PyQt5.QtQml import qmlRegisterType, QQmlComponent, QQmlApplicationEngine
 from PyQt5.QtCore import QTimer, QObject, QThread, QSettings, pyqtSignal
+from PyQt5.QtWidgets import QApplication
 
 from time import strftime, localtime
 
@@ -63,7 +64,7 @@ class Backend(QObject):
 backend = Backend()
 
 # Create Application Instance
-app = QGuiApplication(sys.argv)
+app = QApplication(sys.argv)
 
 # Create a QML Engine
 engine = QQmlApplicationEngine()
